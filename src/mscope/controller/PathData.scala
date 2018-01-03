@@ -22,7 +22,7 @@ class PathData(val path: Path)
     /**
      * The name of the file denoted by the path
      */
-    lazy val fileName = path.getFileName.toString()
+    lazy val fileName = path.getFileName.toOption.map(_.toString).getOrElse("~")
     
     /**
      * Whether the path represents a directory

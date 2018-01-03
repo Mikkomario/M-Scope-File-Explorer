@@ -42,7 +42,7 @@ class FileExplorer(private var rootPath: PathData = new PathData(Paths.get("")))
         val nextDirectory = currentDirectory.children.find(_.name == dirName)
         if (nextDirectory.isDefined)
         {
-            currentDirPath :+ nextDirectory.get
+            currentDirPath :+= nextDirectory.get
             true
         }
         else
