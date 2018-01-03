@@ -15,9 +15,12 @@ object TextExplorer extends App
     // Sets up the explorer
     val explorer = new FileExplorer()
     
+    // TODO: Describe gigs and kilos too
     def desc(data: DataBlob) = f"\n- ${ data.name }\t${ data.size * megaMod }%.1f Mb"
     def list(items: Seq[DataBlob], title: String) = 
     {
+        // Describe directories asynchronously, updaring the lines when data is read 
+        // (Reading the whole drive may take a serious amount of time)
         if (!items.isEmpty)
         {
             val hiddenAndOther = items.groupBy(_.name.startsWith(".")).mapValues(_.sortWith(_.size > _.size))
